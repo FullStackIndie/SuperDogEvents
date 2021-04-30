@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+
+<!--
+  TODO: Change Title
+-->
+<head>
+  <title>Template</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/site.css">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a9c823f698.js" crossorigin="anonymous"></script>
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Courgette&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+
+</head>
+
+<body onload="buildDropDown()">
+  <header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" id="NavBar-BG">
+      <!--
+        TODO: Change Header name
+      -->
+      <a class="navbar-brand" href="#">Template</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="theApp.html">The App</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="seeTheCode.html">See The Code</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+<div class="jumbotron jumbotron-fluid header">
+<div class="container hero"></div>
+</div>
+  <!--
+    TODO: Change The Spacing and alignment
+  -->
+  <!-- Begin page content -->
+<main role="main" class="container-fluid">
+  <div class="dogContainer">
+    <div class="row">
+        <div class="col-sm-6">
+          <div class="btn-group">
+          <button type="button" class="btn btn-secondary">Pick A Location</button>
+          <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
+          <div id="eventDropDown" class="dropdown-menu">
+            <!-- Template for dropdown -->
+          </div>
+        </div>
+        <table class="table table-striped">
+          <tr>
+            <th colspan="2" id="statsHeader">Stats For All Events</th>
+          </tr>
+          <tr>
+            <td>Total Attendance</td>
+            <td id="total">100</td>
+          </tr>
+          <tr>
+            <td>Average Attendance</td>
+            <td id="average">100</td>
+          </tr>
+          <tr>
+            <td>Most Attendance</td>
+            <td id="most">100</td>
+          </tr>
+          <tr>
+            <td>Least Attendance</td>
+            <td id="least">100</td>
+          </tr>
+        </table>
+      </div>
+        <div class="col-sm-6 order-first order-md-2">
+          <img src="/img/js.png" class="img-fluid p-2">
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addAddress">
+      Add Address
+    </button>
+    <hr>
+    <table class="table table-striped" id="addressBook">
+      <thead class="thead-dark">
+        <tr>
+          <th>Name</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Email</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody id="resultsBody">
+      <!-- Data Goes Here -->
+      </tbody>
+    </table>
+    <div class="modal" id="addAddress">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Add a new address</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <form id="newAddressForm">
+              <div class="form-group">
+                <label for="newName">Full Name</label>
+                <input type="text" class="form-control" id="newName" placeholder="Full Name">
+              </div>
+              <div class="form-group">
+                <label for="newCity">City</label>
+                <input type="text" class="form-control" id="newCity" placeholder="City">
+              </div>
+              <div class="form-group">
+                <label for="newState">State</label>
+                <input type="text" class="form-control" id="newState" placeholder="State">
+              </div>
+              <div class="form-group">
+                <label for="newEmail">Email</label>
+                <input type="email" class="form-control" id="newEmail" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <label for="newPhone">Phone Number</label>
+                <input type="tel" class="form-control" id="newPhone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                  placeholder="Phone">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button class="button" class="btn" onclick="saveAddress()" style="background-color: coral;"
+              data-dismiss="modal">Save Changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!--
+    TODO: Change The Footer Title
+  -->
+  <footer class="footer" id="Footer-BG">
+    <div class="container">
+      <span class="text-muted">Template</span>
+    </div>
+  </footer>
+
+
+
+<template id="Data-Template">
+  <tr>
+    <td id="name"></td>
+    <td id="city"></td>
+    <td id="state"></td>
+    <td id="email"></td>
+    <td id="phone"></td>
+</tr>
+</template>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+  <!-- SweetAlert -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="/js/site.js"></script>
+</body>
+
+</html>                   
