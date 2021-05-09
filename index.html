@@ -115,11 +115,11 @@
     <table class="table table-striped" id="addressBook">
       <thead class="thead-dark">
         <tr>
-          <th>Name</th>
+          <th>Event Name</th>
           <th>City</th>
           <th>State</th>
-          <th>Email</th>
-          <th>Phone</th>
+          <th>Attendance</th>
+          <th>Event Date</th>
         </tr>
       </thead>
       <tbody id="resultsBody">
@@ -130,14 +130,14 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Add a new address</h4>
+            <h4 class="modal-title">Add a new Event</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
           <div class="modal-body">
-            <form id="newAddressForm">
+            <form id="newEventForm">
               <div class="form-group">
-                <label for="newName">Full Name</label>
-                <input type="text" class="form-control" id="newName" placeholder="Full Name">
+                <label for="newEvent">Event Name</label>
+                <input type="text" class="form-control" id="newEvent" placeholder="Event Name">
               </div>
               <div class="form-group">
                 <label for="newCity">City</label>
@@ -148,19 +148,19 @@
                 <input type="text" class="form-control" id="newState" placeholder="State">
               </div>
               <div class="form-group">
-                <label for="newEmail">Email</label>
-                <input type="email" class="form-control" id="newEmail" placeholder="Email">
+                <label for="newAttendance">Attendance</label>
+                <input type="number" class="form-control" id="newAttendance" placeholder="Attendance">
               </div>
               <div class="form-group">
-                <label for="newPhone">Phone Number</label>
-                <input type="tel" class="form-control" id="newPhone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                  placeholder="Phone">
+                <label for="newDate">Event Date</label>
+                <input type="date" class="form-control" id="newDate"
+                  placeholder="Date">
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <button class="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button class="button" class="btn" onclick="saveAddress()" style="background-color: coral;"
+            <button class="button" class="btn" onclick="saveEvents()" style="background-color: coral;"
               data-dismiss="modal">Save Changes</button>
           </div>
         </div>
@@ -173,7 +173,7 @@
   -->
   <footer class="footer" id="Footer-BG">
     <div class="container">
-      <span class="text-muted">Template</span>
+      <span class="text-muted">&copy; John Murphy</span>
     </div>
   </footer>
 
@@ -181,11 +181,11 @@
 
 <template id="Data-Template">
   <tr>
-    <td id="name"></td>
+    <td id="eventName"></td>
     <td id="city"></td>
     <td id="state"></td>
-    <td id="email"></td>
-    <td id="phone"></td>
+    <td id="attendance"></td>
+    <td id="date"></td>
 </tr>
 </template>
 

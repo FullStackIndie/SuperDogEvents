@@ -1,61 +1,61 @@
 var events = [{
-        event: "ComicCon",
+        eventName: "ComicCon",
         city: "New York",
         state: "New York",
         attendance: 240000,
         date: "06/01/2017",
     },
     {
-        event: "ComicCon",
+        eventName: "ComicCon",
         city: "New York",
         state: "New York",
         attendance: 250000,
         date: "06/01/2018",
     },
     {
-        event: "ComicCon",
+        eventName: "ComicCon",
         city: "New York",
         state: "New York",
         attendance: 257000,
         date: "06/01/2019",
     },
     {
-        event: "ComicCon",
+        eventName: "ComicCon",
         city: "San Diego",
         state: "California",
         attendance: 130000,
         date: "06/01/2017",
     },
     {
-        event: "ComicCon",
+        eventName: "ComicCon",
         city: "San Diego",
         state: "California",
         attendance: 140000,
         date: "06/01/2018",
     },
     {
-        event: "ComicCon",
+        eventName: "ComicCon",
         city: "San Diego",
         state: "California",
         attendance: 150000,
         date: "06/01/2019",
     },
     {
-        event: "HeroesCon",
+        eventName: "HeroesCon",
         city: "Charlotte",
         state: "North Carolina",
         attendance: 40000,
         date: "06/01/2017",
     },
     {
-        event: "HeroesCon",
+        eventName: "HeroesCon",
         city: "Charlotte",
         state: "North Carolina",
         attendance: 45000,
         date: "06/01/2018",
     },
     {
-        event: "HeroesCon",
+        eventName: "HeroesCon",
         city: "Charlotte",
         state: "North Carolina",
         attendance: 50000,
@@ -63,55 +63,56 @@ var events = [{
     },
 ];
 
-// loadAddressBook();
+loadData();
 
-function loadAddressBook(){
-    let addressBook = [];
-    addressBook = getData();
-    displayData(addressBook);
+function loadData(){
+    let allEvents = [];
+    allEvents = getData();
+    displayData(allEvents);
 }
 
 function getData(){
-    let addressBook = JSON.parse(localStorage.getItem("events")) || [];
-    if(addressBook.length == 0){
-        addressBook = events;
-        localStorage.setItem("events", JSON.stringify(addressBook));
+    let allEvents = JSON.parse(localStorage.getItem("events")) || [];
+    if(allEvents.length == 0){
+        allEvents = events;
+        localStorage.setItem("events", JSON.stringify(allEvents));
     }
-    return addressBook;
+    return allEvents;
 }
 
-function saveAddress(){
+function saveEvents(){
     // grab the events out of local storage
-    let addressBook = JSON.parse(localStorage.getItem("events")) || events;
+    let allEvents = JSON.parse(localStorage.getItem("events")) || events;
 
-    let obj = {};
-    obj["name"] = document.getElementById("newName").value;
-    obj["city"] = document.getElementById("newCity").value;
-    obj["state"] = document.getElementById("newState").value;
-    obj["email"] = document.getElementById("newEmail").value;
-    obj["phone"] = document.getElementById("newPhone").value;
+    let event = {
+        eventName: document.getElementById("newName").value,
+        city: document.getElementById("newCity").value,
+        state: document.getElementById("newState").value,
+        attendance: document.getElementById("newAttendance").value,
+        date: document.getElementById("newDate").value
+    };
 
-    addressBook.push(obj);
+    allEvents.push(event);
 
-    localStorage.setItem("eventsArray", JSON.stringify(addressBook));
+    localStorage.setItem("events", JSON.stringify(allEvents));
 
-    displayData(addressBook);
+    displayData(allEvents);
 
 }
 
-function displayData(addressBook){
+function displayData(allEvents){
     const template = document.getElementById("Data-Template");
     const resultsBody = document.getElementById("resultsBody");
     // clear table first
     resultsBody.innerHTML = "";
-    for(let i = 0; i < addressBook.length; i++){
+    for(let i = 0; i < allEvents.length; i++){
         const dataRow = document.importNode(template.content, true);
 
-        dataRow.getElementById("name").textContent = addressBook[i].name;
-        dataRow.getElementById("city").textContent = addressBook[i].city;
-        dataRow.getElementById("state").textContent = addressBook[i].state;
-        dataRow.getElementById("email").textContent = addressBook[i].email;
-        dataRow.getElementById("phone").textContent = formatPhoneNumber(addressBook[i].phone);
+        dataRow.getElementById("eventName").textContent = allEvents[i].eventName;
+        dataRow.getElementById("city").textContent = allEvents[i].city;
+        dataRow.getElementById("state").textContent = allEvents[i].state;
+        dataRow.getElementById("attendance").textContent = allEvents[i].attendance;
+        dataRow.getElementById("date").textContent = allEvents[i].date;
 
         resultsBody.appendChild(dataRow);
     }
