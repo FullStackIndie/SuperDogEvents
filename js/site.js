@@ -85,11 +85,11 @@ function saveEvents(){
     let allEvents = JSON.parse(localStorage.getItem("events")) || events;
 
     let event = {
-        eventName: document.getElementById("newName").value,
+        eventName: document.getElementById("newEventName").value,
         city: document.getElementById("newCity").value,
         state: document.getElementById("newState").value,
         attendance: document.getElementById("newAttendance").value,
-        date: document.getElementById("newDate").value
+        date: formatDate(document.getElementById("newDate").value)
     };
 
     allEvents.push(event);
@@ -97,7 +97,7 @@ function saveEvents(){
     localStorage.setItem("events", JSON.stringify(allEvents));
 
     displayData(allEvents);
-
+    buildDropDown();
 }
 
 function displayData(allEvents){
@@ -118,22 +118,11 @@ function displayData(allEvents){
     }
 }
 
-function formatPhoneNumber(phoneNumberString) {
-    var cleaned = ('' + phoneNumberString).replace(/\D/g, '');
-    var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
-    (/^\d{10}$/)
-    if (match) {
-        return '(' + match[1] + ') ' + match[2] + '-' + match[3];
-    }
-    return null;
-}
-
-var filteredEvents = events;
 
 function buildDropDown(){
     let eventDD = document.getElementById("eventDropDown");
-
-    let distinctEvents = [...new Set(events.map(event => event.city))];
+    let allEvents = JSON.parse(localStorage.getItem("events")) || events;
+    let distinctEvents = [...new Set(allEvents.map(event => event.city))];
 
     let linkHTMLEnd = '<div class="dropdown-divider"></div><a class="dropdown-item" onclick="getEvents(this)" data-string="All" >All</a>';
     let resultsHTML = "";
@@ -144,10 +133,10 @@ function buildDropDown(){
 
     resultsHTML += linkHTMLEnd;
     eventDD.innerHTML = resultsHTML;
-    displayStats();
+    displayStats(events);
 }
 
-function displayStats(){
+function displayStats(filteredEvents) {
     let total = 0;
     let average = 0;
     let most = 0;
@@ -155,7 +144,7 @@ function displayStats(){
     let currentAttendance = 0;
 
     for(let i = 0; i < filteredEvents.length; i++){
-        currentAttendance = filteredEvents[i].attendance;
+        currentAttendance = parseInt(filteredEvents[i].attendance);
         total += currentAttendance;
 
         if(most < currentAttendance){
@@ -172,8 +161,8 @@ function displayStats(){
     document.getElementById("least").innerHTML = least.toLocaleString();
     document.getElementById("average").innerHTML = average.toLocaleString(
         undefined, {
-             minimumFractionDigits: 0,
-             maximumFractionDigits: 0,
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
             }
         );
 }
@@ -181,21 +170,24 @@ function displayStats(){
 function getEvents(element) {
     let city = element.getAttribute("data-string");
     let curEvents = JSON.parse(localStorage.getItem("events")) || events; 
-    filteredEvents = curEvents;
+    let filteredEvents = curEvents;
 
     document.getElementById("statsHeader").innerHTML = `Stats For ${city} Events`;
     if(city != "All") {
-        filteredEvents = curEvents.filter(function (event){
+        filteredEvents = curEvents.filter(function (event) {
             if(event.city == city){
                 return event;
             }
-         });
+        });
     }
-    displayStats();
+    displayStats(filteredEvents);
 }
 
 // Reformat new dates
 function formatDate(dateString) {
-    let [year, month, day] = dateString.split('-');
+
+    let [year, month, day] = dateString.replace(/-/g, '/').split('/');
     return [month, day, year].join('/');
+    // let [year, month, day] = dateString.split('-');
+    // return [month, day, year].join('/');
 }
