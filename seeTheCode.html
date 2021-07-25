@@ -4,8 +4,9 @@
 <!--
   TODO: Change Title
 -->
+
 <head>
-  <title>Template</title>
+  <title>Super Dog Events</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,12 +19,14 @@
 
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/a9c823f698.js" crossorigin="anonymous"></script>
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Courgette&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&family=M+PLUS+Rounded+1c&display=swap"
+    rel="stylesheet">
 
+  <link rel="stylesheet" href="/css/enlighterjs.min.css">
 </head>
 
 <body>
@@ -33,7 +36,7 @@
       <!--
         TODO: Change Header name
       -->
-      <a class="navbar-brand" href="#">Template</a>
+      <a class="navbar-brand" href="index.html">Super Dog Events</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -50,7 +53,7 @@
             <a class="nav-link" href="seeTheCode.html">See The Code<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href=" https://johnmurphyportfolio.netlify.app/" target="_blank">About The Developer</a>
           </li>
         </ul>
         <form class="form-inline mt-2 mt-md-0">
@@ -67,40 +70,68 @@
   <!-- Begin page content -->
   <main role="main" class="container" id="MainTop-BG">
     <div class="row">
-      <div class="col-9 col-md-9 col-lg-9"><h1>See The Code</h1></div>
-      <div class="col-9 col-md-9 col-lg-9"><p id="Font">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-        laborum.
-      </p> </div>
+      <div class="col-9 col-md-9 col-lg-9">
+        <h1>See The Code</h1>
+      </div>
+      <div class="col-9 col-md-9 col-lg-9">
+        <p>
+Builds a dynamic dropdown whenever a new City is added
+        </p>
+        <pre>
+function buildDropDown(){
+let eventDD = document.getElementById("eventDropDown");
+let allEvents = JSON.parse(localStorage.getItem("events")) || events;
+let distinctEvents = [...new Set(allEvents.map(event => event.city))];
+
+let linkHTMLEnd = '<div class="dropdown-divider"></div><a class="dropdown-item" onclick="getEvents(this)"
+  data-string="All">All</a>';
+let resultsHTML = "";
+
+for(let i = 0; i < distinctEvents.length; i++){ resultsHTML +=`<a class="dropdown-item" onclick="getEvents(this)"
+  data-string="${distinctEvents[i]}">${distinctEvents[i]}</a>`;
+  }
+
+  resultsHTML += linkHTMLEnd;
+  eventDD.innerHTML = resultsHTML;
+  displayStats(events);
+  }
+        </pre>
+      </div>
       <div class="col-3 col-md-3 col-lg-3"><img class="container-fluid" src="/img/js.png" /></div>
     </div>
 
     <div class="row">
-      <div class="col-9 col-md-9 col-lg-9"><h6>JavaScript Template</h6><pre><code>
-const fs = require("fs-extra") // note: not being used just yet
-const ejs = require("ejs")
-const argv = require("yargs-parser")(process.argv.slice(2))
-const path = require("path")
+      <div class="col-9 col-md-9 col-lg-9">
+        <p>
+Display The Stats of All the cities and events.
+        </p>
+        <pre>
+function displayStats(filteredEvents) {
+let total = 0;
+let average = 0;
+let most = 0;
+let least = -1;
+let currentAttendance = 0;
 
-const main = () => {
-// 1. Welcome log
-console.log("Generating template...")
-try {
-// 2. Destructure args from argv and set _ array to variable "data"
-
-      </code></pre></div>
-      <div class="col-3 col-md-3 col-lg-3"></div>
-      <div class="col-3 col-md-3 col-lg-3"></div>
+for(let i = 0; i < filteredEvents.length; i++){ currentAttendance=parseInt(filteredEvents[i].attendance); total
+  +=currentAttendance; if(most < currentAttendance){ most=currentAttendance; } if(least> currentAttendance || least <
+    0){ least=currentAttendance; } } average=total / filteredEvents.length;
+    document.getElementById("total").innerHTML=total.toLocaleString();
+    document.getElementById("most").innerHTML=most.toLocaleString();
+    document.getElementById("least").innerHTML=least.toLocaleString();
+    document.getElementById("average").innerHTML=average.toLocaleString( undefined, { minimumFractionDigits: 0,
+    maximumFractionDigits: 0, } ); }
+        </pre>
+      </div>
     </div>
 
-    <div class="row">
-      <div class="col-4 col-md-4 col-lg-4"><img src="/img/coderFoundry.png"/></div>
-      <div class="col-4 col-md-4 col-lg-4"></div>
-      <div class="col-4 col-md-4 col-lg-4"></div>
-    </div>
+
+<div class="row">
+  <div class="col-9 col-md-9 col-lg-9">
+      <a href="https://github.com/murphymUrph21/SuperDogEvents" class="btn btn-dark" target="_blank">Full Source on my Github</a>
+  </div>
+</div>
+
   </main>
 
   <!--
@@ -108,7 +139,7 @@ try {
   -->
   <footer class="footer" id="Footer-BG">
     <div class="container">
-      <span class="text-muted">Template</span>
+      <span class="text-white-50">&copy; John Murphy 2021</span>
     </div>
   </footer>
 
@@ -126,6 +157,22 @@ try {
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
   </script>
+
+  <script src="js/enlighterjs.min.js"></script>
+  <script>
+    // INIT CODE - simple page-wide initialization based on css selectors
+    // - highlight all pre + code tags (CSS3 selectors)
+    // - use javascript as default language
+    // - use theme "enlighter" as default theme
+    // - replace tabs with 2 spaces
+    EnlighterJS.init('pre', 'code', {
+      language: 'javascript',
+      theme: 'beyond',
+      indent: 2
+    });
+  </script>
+
+
 </body>
 
 </html>

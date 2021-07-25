@@ -5,7 +5,7 @@
   TODO: Change Title
 -->
 <head>
-  <title>Template</title>
+  <title>Super Dog Events</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,14 +26,14 @@
 
 </head>
 
-<body>
+<body onload="buildDropDown()">
   <header>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" id="NavBar-BG">
       <!--
         TODO: Change Header name
       -->
-      <a class="navbar-brand" href="#">Template</a>
+      <a class="navbar-brand" href="index.html">Super Dog Events</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -50,56 +50,122 @@
             <a class="nav-link" href="seeTheCode.html">See The Code</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href=" https://johnmurphyportfolio.netlify.app/" target="_blank">About The Developer</a>
           </li>
         </ul>
-        <form class="form-inline mt-2 mt-md-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
       </div>
     </nav>
   </header>
-
   <!--
     TODO: Change The Spacing and alignment
   -->
   <!-- Begin page content -->
-  <main role="main" class="container" id="MainTop-BG">
+<main role="main" class="container-fluid">
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <div class="dogContainer">
     <div class="row">
-      <div class="col-9 col-md-9 col-lg-9"><h1>The App</h1></div>
-      <div class="col-9 col-md-9 col-lg-9"><p id="Font">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-        laborum.
-      </p> </div>
-      <div class="col-3 col-md-3 col-lg-3"><img class="container-fluid" src="/img/js.png" /></div>
+        <div class="col-sm-6">
+          <div class="btn-group">
+          <button type="button" class="btn btn-secondary" onclick="javascript:void(0)">Pick A Location</button>
+          <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
+          <div id="eventDropDown" class="dropdown-menu">
+            <!-- Template for dropdown -->
+          </div>
+        </div>
+        <table class="table table-striped">
+          <tr>
+            <th colspan="2" id="statsHeader">Stats For All Events</th>
+          </tr>
+          <tr>
+            <td>Total Attendance</td>
+            <td id="total">100</td>
+          </tr>
+          <tr>
+            <td>Average Attendance</td>
+            <td id="average">100</td>
+          </tr>
+          <tr>
+            <td>Most Attendance</td>
+            <td id="most">100</td>
+          </tr>
+          <tr>
+            <td>Least Attendance</td>
+            <td id="least">100</td>
+          </tr>
+        </table>
+      </div>
+        <div class="col-sm-6 order-first order-md-2">
+          <img src="/img/js.png" class="float-right mr-5" style="width: 250px;height: 250px;" >
+      </div>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="col-9 col-md-9 col-lg-9"><h6>JavaScript Template</h6><pre><code>
-const fs = require("fs-extra") // note: not being used just yet
-const ejs = require("ejs")
-const argv = require("yargs-parser")(process.argv.slice(2))
-const path = require("path")
 
-const main = () => {
-// 1. Welcome log
-console.log("Generating template...")
-try {
-// 2. Destructure args from argv and set _ array to variable "data"
 
-      </code></pre></div>
-      <div class="col-3 col-md-3 col-lg-3"></div>
-      <div class="col-3 col-md-3 col-lg-3"></div>
-    </div>
 
-    <div class="row">
-      <div class="col-4 col-md-4 col-lg-4"><img src="/img/coderFoundry.png"/></div>
-      <div class="col-4 col-md-4 col-lg-4"></div>
-      <div class="col-4 col-md-4 col-lg-4"></div>
+
+
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addEvent">
+      Add Address
+    </button>
+    <hr>
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>Event Name</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Attendance</th>
+          <th>Event Date</th>
+        </tr>
+      </thead>
+      <tbody id="resultsBody">
+      <!-- Data Goes Here -->
+      </tbody>
+    </table>
+    <div class="modal" id="addEvent">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Add a new Event</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <form id="newEventForm">
+              <div class="form-group">
+                <label for="newEventName">Event Name</label>
+                <input type="text" class="form-control" id="newEventName" placeholder="Event Name">
+              </div>
+              <div class="form-group">
+                <label for="newCity">City</label>
+                <input type="text" class="form-control" id="newCity" placeholder="City">
+              </div>
+              <div class="form-group">
+                <label for="newState">State</label>
+                <input type="text" class="form-control" id="newState" placeholder="State">
+              </div>
+              <div class="form-group">
+                <label for="newAttendance">Attendance</label>
+                <input type="number" class="form-control" id="newAttendance" placeholder="Attendance">
+              </div>
+              <div class="form-group">
+                <label for="newDate">Event Date</label>
+                <input type="date" class="form-control" id="newDate"
+                  placeholder="Date">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button class="button" class="btn" onclick="saveEvents()" style="background-color: coral;"
+              data-dismiss="modal">Save Changes</button>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
 
@@ -108,11 +174,21 @@ try {
   -->
   <footer class="footer" id="Footer-BG">
     <div class="container">
-      <span class="text-muted">Template</span>
+      <span class="text-white-50">&copy; John Murphy 2021</span>
     </div>
   </footer>
 
 
+
+<template id="Data-Template">
+  <tr>
+    <td id="eventName"></td>
+    <td id="city"></td>
+    <td id="state"></td>
+    <td id="attendance"></td>
+    <td id="date"></td>
+</tr>
+</template>
 
 
   <!-- Optional JavaScript -->
@@ -126,6 +202,9 @@ try {
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
   </script>
+  <!-- SweetAlert -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="/js/site.js"></script>
 </body>
 
-</html>
+</html>                   

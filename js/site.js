@@ -188,6 +188,5 @@ function formatDate(dateString) {
 
     let [year, month, day] = dateString.replace(/-/g, '/').split('/');
     return [month, day, year].join('/');
-    // let [year, month, day] = dateString.split('-');
-    // return [month, day, year].join('/');
+    
 }
