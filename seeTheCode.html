@@ -1,24 +1,22 @@
 <!doctype html>
 <html lang="en">
 
-<!--
-  TODO: Change Title
--->
-
 <head>
   <title>Super Dog Events</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  <meta name="description"
+    content="See the code behind SuperDogEvents and how you can convert math problems to code">
+  
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="https://dsm56ob6rdulz.cloudfront.net/favicon.ico" />
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/site.css">
+  <link rel="stylesheet" href="https://dsm56ob6rdulz.cloudfront.net/SuperDogEvents/css/site.css">
 
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/a9c823f698.js" crossorigin="anonymous"></script>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
@@ -26,16 +24,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Courgette&family=M+PLUS+Rounded+1c&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="/css/enlighterjs.min.css">
+  <link rel="stylesheet" href="https://dsm56ob6rdulz.cloudfront.net/SuperDogEvents/css/enlighterjs.min.css">
 </head>
 
 <body>
   <header>
-    <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" id="NavBar-BG">
-      <!--
-        TODO: Change Header name
-      -->
       <a class="navbar-brand" href="index.html">Super Dog Events</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,9 +58,6 @@
     </nav>
   </header>
 
-  <!--
-    TODO: Change The Spacing and alignment
-  -->
   <!-- Begin page content -->
   <main role="main" class="container" id="MainTop-BG">
     <div class="row">
@@ -97,9 +88,8 @@ for(let i = 0; i < distinctEvents.length; i++){ resultsHTML +=`<a class="dropdow
   }
         </pre>
       </div>
-      <div class="col-3 col-md-3 col-lg-3"><img class="container-fluid" src="/img/js.png" /></div>
+      <div class="col-3 col-md-3 col-lg-3"><img class="container-fluid" src="https://dsm56ob6rdulz.cloudfront.net/SuperDogEvents/img/js.png" /></div>
     </div>
-
     <div class="row">
       <div class="col-9 col-md-9 col-lg-9">
         <p>
@@ -124,30 +114,20 @@ for(let i = 0; i < filteredEvents.length; i++){ currentAttendance=parseInt(filte
         </pre>
       </div>
     </div>
-
-
     <div class="row">
       <div class="col-9 col-md-9 col-lg-9">
         <a href="https://github.com/FullStackIndie/SuperDogEvents" class="btn btn-dark" target="_blank">Full Source on
           my Github</a>
       </div>
     </div>
-
   </main>
 
-  <!--
-    TODO: Change The Footer Title
-  -->
   <footer class="footer" id="Footer-BG">
     <div class="container">
-      <span class="text-white-50">&copy; John Murphy 2021</span>
+      <span class="text-white-50">&copy; John Murphy 2023</span>
     </div>
   </footer>
 
-
-
-
-  <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -159,21 +139,14 @@ for(let i = 0; i < filteredEvents.length; i++){ currentAttendance=parseInt(filte
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
   </script>
 
-  <script src="js/enlighterjs.min.js"></script>
+  <script src="https://dsm56ob6rdulz.cloudfront.net/SuperDogEvents/js/enlighterjs.min.js"></script>
   <script>
-    // INIT CODE - simple page-wide initialization based on css selectors
-    // - highlight all pre + code tags (CSS3 selectors)
-    // - use javascript as default language
-    // - use theme "enlighter" as default theme
-    // - replace tabs with 2 spaces
     EnlighterJS.init('pre', 'code', {
       language: 'javascript',
-      theme: 'beyond',
+      theme: 'dracula',
       indent: 2
     });
   </script>
-
-
 </body>
 
 </html>

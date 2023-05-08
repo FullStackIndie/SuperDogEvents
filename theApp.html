@@ -1,38 +1,33 @@
 <!doctype html>
 <html lang="en">
 
-<!--
-  TODO: Change Title
--->
 <head>
   <title>Super Dog Events</title>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description"
+    content="SuperDogEvents is a simple web app designed to calculate different attendance statistics based on the number of people attending an event">
+
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="https://dsm56ob6rdulz.cloudfront.net/favicon.ico" />
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/site.css">
+  <link rel="stylesheet" href="https://dsm56ob6rdulz.cloudfront.net/SuperDogEvents/css/site.css">
 
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/a9c823f698.js" crossorigin="anonymous"></script>
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Courgette&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
-
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&family=M+PLUS+Rounded+1c&display=swap"
+    rel="stylesheet">
 </head>
 
 <body onload="buildDropDown()">
   <header>
-    <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" id="NavBar-BG">
-      <!--
-        TODO: Change Header name
-      -->
       <a class="navbar-brand" href="index.html">Super Dog Events</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,59 +51,53 @@
       </div>
     </nav>
   </header>
-  <!--
-    TODO: Change The Spacing and alignment
-  -->
+
   <!-- Begin page content -->
-<main role="main" class="container-fluid">
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <div class="dogContainer">
-    <div class="row">
+  <main role="main" class="container-fluid">
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="dogContainer">
+      <div class="row">
         <div class="col-sm-6">
           <div class="btn-group">
-          <button type="button" class="btn btn-secondary" onclick="javascript:void(0)">Pick A Location</button>
-          <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
-          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
-          <div id="eventDropDown" class="dropdown-menu">
-            <!-- Template for dropdown -->
+            <button type="button" class="btn btn-secondary" onclick="javascript:void(0)">Pick A Location</button>
+            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
+            <div id="eventDropDown" class="dropdown-menu">
+              <!-- Template for dropdown -->
+            </div>
           </div>
+          <table class="table table-striped">
+            <tr>
+              <th colspan="2" id="statsHeader">Stats For All Events</th>
+            </tr>
+            <tr>
+              <td>Total Attendance</td>
+              <td id="total">100</td>
+            </tr>
+            <tr>
+              <td>Average Attendance</td>
+              <td id="average">100</td>
+            </tr>
+            <tr>
+              <td>Most Attendance</td>
+              <td id="most">100</td>
+            </tr>
+            <tr>
+              <td>Least Attendance</td>
+              <td id="least">100</td>
+            </tr>
+          </table>
         </div>
-        <table class="table table-striped">
-          <tr>
-            <th colspan="2" id="statsHeader">Stats For All Events</th>
-          </tr>
-          <tr>
-            <td>Total Attendance</td>
-            <td id="total">100</td>
-          </tr>
-          <tr>
-            <td>Average Attendance</td>
-            <td id="average">100</td>
-          </tr>
-          <tr>
-            <td>Most Attendance</td>
-            <td id="most">100</td>
-          </tr>
-          <tr>
-            <td>Least Attendance</td>
-            <td id="least">100</td>
-          </tr>
-        </table>
-      </div>
         <div class="col-sm-6 order-first order-md-2">
-          <img src="/img/js.png" class="float-right mr-5" style="width: 250px;height: 250px;" >
+          <img src="https://dsm56ob6rdulz.cloudfront.net/SuperDogEvents/img/js.png" class="float-right mr-5" style="width: 250px;height: 250px;">
+        </div>
       </div>
     </div>
-  </div>
 
-
-
-
-
-
+    <!-- Modal -->
     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addEvent">
       Add Address
     </button>
@@ -124,7 +113,7 @@
         </tr>
       </thead>
       <tbody id="resultsBody">
-      <!-- Data Goes Here -->
+        <!-- Data Goes Here -->
       </tbody>
     </table>
     <div class="modal" id="addEvent">
@@ -154,8 +143,7 @@
               </div>
               <div class="form-group">
                 <label for="newDate">Event Date</label>
-                <input type="date" class="form-control" id="newDate"
-                  placeholder="Date">
+                <input type="date" class="form-control" id="newDate" placeholder="Date">
               </div>
             </form>
           </div>
@@ -169,42 +157,37 @@
     </div>
   </main>
 
-  <!--
-    TODO: Change The Footer Title
-  -->
   <footer class="footer" id="Footer-BG">
     <div class="container">
-      <span class="text-white-50">&copy; John Murphy 2021</span>
+      <span class="text-white-50">&copy; John Murphy 2023</span>
     </div>
   </footer>
 
 
+<!-- Templates -->
+  <template id="Data-Template">
+    <tr>
+      <td id="eventName"></td>
+      <td id="city"></td>
+      <td id="state"></td>
+      <td id="attendance"></td>
+      <td id="date"></td>
+    </tr>
+  </template>
 
-<template id="Data-Template">
-  <tr>
-    <td id="eventName"></td>
-    <td id="city"></td>
-    <td id="state"></td>
-    <td id="attendance"></td>
-    <td id="date"></td>
-</tr>
-</template>
-
-
-  <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-  </script>
+    </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-  </script>
+    </script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-  </script>
+    </script>
   <!-- SweetAlert -->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-  <script src="/js/site.js"></script>
+  <script src="https://dsm56ob6rdulz.cloudfront.net/SuperDogEvents/js/site.js"></script>
 </body>
 
-</html>                   
+</html>
